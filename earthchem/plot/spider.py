@@ -56,14 +56,14 @@ def spiderplot(df, ax=None, components:list=None, plot=True, fill=False, **kwarg
 
     if plot:
         ls = ax.plot(c_indexes,
-                     df[components].T.values.astype(np.float),
+                     df[components].T.values.astype(float),
                      **sty)
 
         sty['s'] = kwargs.get('markersize') or kwargs.get('s') or 5.
         if sty.get('color') is None:
             sty['color'] = ls[0].get_color()
         sc = ax.scatter(np.tile(c_indexes, (df[components].index.size,1)).T,
-                        df[components].T.values.astype(np.float), **sty)
+                        df[components].T.values.astype(float), **sty)
 
     for s_item in ['marker', 's']:
         if s_item in sty:

@@ -53,9 +53,9 @@ class Query(dict):
         return 'Query({})'.format(kwargs)
 
     def __setitem__(self, key, value):
-        """ Sets a particular query term, making sure that the values 
-            are ok etc. 
-            
+        """ Sets a particular query term, making sure that the values
+            are ok etc.
+
             Parameters:
                 key - the query key to set
                 value - the value to set for that search.
@@ -85,7 +85,7 @@ class Query(dict):
             except:
                 raise IOError("Couldn't parse data in response")
         else:
-            raise IOError("Couldn't get data from network") 
+            raise IOError("Couldn't get data from network")
 
     def dataframe(self, max_rows=None, standarditems=True, drop_empty=True):
         """ Get the actual data in a dataframe
@@ -93,11 +93,11 @@ class Query(dict):
             Note that this doesn't do pagination yet...
 
             Parameters:
-                max_rows - the maximum number of rows to get. If None, 
+                max_rows - the maximum number of rows to get. If None,
                     defaults to Query.count() (i.e. give me everything)
-                standarditems - if True, returns the Earthchem 
+                standarditems - if True, returns the Earthchem
                     standard items in the table
-                drop_empty - if True, drops columns for which there 
+                drop_empty - if True, drops columns for which there
                     is no data
         """
         # Check that we actually have some data to fetch
@@ -141,7 +141,7 @@ class Query(dict):
                         continue
                     else:
                         raise IOError("Couldn't parse data in response")
-        
+
         # We'll keep the accumulated data thank you
         df = accumulator
 
@@ -167,22 +167,22 @@ class Query(dict):
 
     @property
     def url(self):
-        query_string = ('http://ecp.iedadata.org/restsearchservice?'
+        query_string = ('http://portal.earthchem.org/restsearchservice?'
                         'outputtype=json')
         for item in self.items():
             query_string += '&{0}={1}'.format(*item)
         return query_string
-    
+
     def info(self, key, pprint=True):
         """ Return info about a search key
-        
+
             Parameters:
                 key - the key to get information about
-                pprint - whether to print the information or return 
+                pprint - whether to print the information or return
                     a dictionary with the contents
-                
+
             Returns:
                 if pprint=True, None, otherwise a dictionary with a
-                'doc' string and a 'valid_values' 
+                'doc' string and a 'valid_values'
         """
         pass

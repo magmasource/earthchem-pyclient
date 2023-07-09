@@ -13,7 +13,7 @@ import os
 import pkg_resources
 
 # We're not live updating at the moment but it's nice to have this recoded somewhere
-SOAP_SCHEMA_URL = 'http://ecp.iedadata.org/soap_search_schema.xsd'
+SOAP_SCHEMA_URL = 'http://portal.earthchem.org/soap_search_schema.xsd'
 SOAP_SCHEMA = pkg_resources.resource_filename(
         "earthchem.resources",
         "soap_search_schema.xsd")
