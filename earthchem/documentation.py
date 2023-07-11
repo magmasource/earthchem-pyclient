@@ -21,7 +21,7 @@ def strip_whitespace(string):
 
 
 # Construct request from EarthChem rest documentation
-REST_DOCO_URL = 'http://ecp.iedadata.org/rest_search_documentation/'
+REST_DOCO_URL = 'http://portal.earthchem.org/rest_search_documentation/'
 if not requests.get(REST_DOCO_URL).ok:
     # We can just use the cached version
     CACHED_DOCO_FILE = pkg_resources.resource_stream(

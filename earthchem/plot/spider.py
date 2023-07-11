@@ -5,12 +5,9 @@
     description: Spider plots
 """
 
+from pyrolite.plot import pyroplot
 
-import pyrolite.plot as pplot
-from pyrolite.geochem import common_elements
-
-
-def spiderplot(*args, **kwargs):
+def spiderplot(df=None, components=None, **kwargs):
     """
     Plots spidergrams for trace elements data.
     By using separate lines and scatterplots, values between two null-valued
@@ -32,4 +29,7 @@ def spiderplot(*args, **kwargs):
     style:
         Styling keyword arguments to pass to matplotlib.
     """
-    return pplot.spiderplot(*args, **kwargs)
+    if components is None:
+        return df.pyroplot.spider(**kwargs)
+    else:
+        return df.loc[:, components].pyroplot.spider(**kwargs)

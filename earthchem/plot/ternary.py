@@ -5,11 +5,9 @@
     description: Ternary plots
 """
 
+from pyrolite.plot import pyroplot
 
-import pyrolite.plot as pplot
-
-
-def ternaryplot(*args, **kwargs):
+def ternaryplot(df=None, components=None, **kwargs):
     """
     Plots scatter ternary diagrams, using a wrapper around the
     python-ternary library (gh.com/marcharper/python-ternary).
@@ -23,4 +21,7 @@ def ternaryplot(*args, **kwargs):
     components: list, None
         Elements or compositional components to plot.
     """
-    return pplot.ternaryplot(*args, **kwargs)
+    if components is None:
+        return df.pyroplot.scatter(**kwargs)
+    else:
+        return df.loc[:, components].pyroplot.scatter(**kwargs)

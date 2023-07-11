@@ -1,4 +1,7 @@
-import pyrolite.plot as pplot
+from pyrolite.plot import pyroplot
 
-def densityplot(*args, **kwargs):
-    return pplot.densityplot(*args, **kwargs)
+def densityplot(df=None, components=None, **kwargs):
+    if components is None:
+        return df.pyroplot.density(**kwargs)
+    else:
+        return df.loc[:, components].pyroplot.density(**kwargs)
